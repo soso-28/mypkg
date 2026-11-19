@@ -18,15 +18,4 @@ def cb():               #タイマーで定期的に呼ばれるコールバッ�
 def main():
     node.create_timer(0.5, cb)  #0.5秒ごとにcbを呼ぶタイマー
     rclpy.spin(node)            #実行（無限ループ。タイマーや送受信を処理し続ける）
-def cb():               #タイマーで定期的に呼ばれるコールバック関数
-    global n            #関数を抜けてもnがリセットされないようにしている
-    msg = Int16()       #メッセージの「オブジェクト」
-    msg.data = n        #msgの持つdataにnを入れる
-    pub.publish(msg)    #pubの持つpublishでメッセージ送信（パブリッシュ）
-    n += 1
-
-
-def main():
-    node.create_timer(0.5, cb)  #0.5秒ごとにcbを呼ぶタイマー
-    rclpy.spin(node)            #実行（無限ループ。タイマーや送受信を処理し続ける）
 
